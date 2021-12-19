@@ -15,7 +15,7 @@ class discord2 extends Phaser.Scene {
     super("bootGame");
     
     this.ps;    // can initialise your variables here 
-    var golen;  // both work : this.variable or var variable_name
+    var golen;  // both 'this.variable' or 'var variable_name' work. I wonder if there is any difference in scope ? So far zilch.
     this.phaser;
     var dino, golen, nixdixyklo, samme, kal_torak, german, xfallseane;
     var tween, marker, lucky137,music;
