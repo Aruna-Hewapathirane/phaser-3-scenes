@@ -3,11 +3,14 @@
 touch README.md
 git init
 git add README.md
-git commit -m "first commit"
+git commit -m "first commit" // This is important, without a commit git will refuse to push
 
-#Just one note: if the repository doesn't exist in Github, first you will have to create it
+#Just one note: 
 
-git remote add origin https://github.com/c0ldlimit/vimcolors.git
+If the repository doesn't exist in Github, first you will have to create it
+
+git remote add origin https://github.com/Aruna-Hewapathirane/phaser-3-scenes.git
+
 git push -u origin master
  
 # Push an existing repository from the command line
