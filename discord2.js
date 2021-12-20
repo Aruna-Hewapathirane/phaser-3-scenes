@@ -82,6 +82,8 @@ class discord2 extends Phaser.Scene {
 */
 
 	this.skull=this.physics.add.sprite(400,300,'skull').setScale(1);
+	this.skull.body.immovable = true;
+	this.skull.body.moves = false;
 
 	this.anims.create({
             key: 'fire',            

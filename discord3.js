@@ -8,6 +8,8 @@ class scene2 extends Phaser.Scene{
     this.platforms;
     this.block;
     this.avatarCollide;
+    this.player;
+    this.cursors;
   
   }
 
@@ -20,14 +22,48 @@ class scene2 extends Phaser.Scene{
 	} 	  
 	
 	this.load.image('block','assets/block.png');
+	this.load.spritesheet('dude','assets/dude.png',{ frameWidth: 32, frameHeight: 48 });
   }
 
   create(){
     
+    //PLAYER BEGIN
+    this.player = this.physics.add.sprite(100, 350, 'dude');
+
+	this.player.setBounce(0.2);
+	this.player.setCollideWorldBounds(true);
+	this.player.setVelocityY(100);
+	
+	
+	this.anims.create({
+		key: 'left',
+		frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+		frameRate: 10,
+		repeat: -1
+	});
+
+	this.anims.create({
+		key: 'turn',
+		frames: [ { key: 'dude', frame: 4 } ],
+		frameRate: 20
+	});
+
+	this.anims.create({
+		key: 'right',
+		frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+		frameRate: 10,
+	repeat: -1
+	});
+    // PLAYER END
+    
+    this.cursors = this.input.keyboard.createCursorKeys();
+        this.physics.add.collider(this.player, this.platforms);
+    
+    
     this.platforms=this.add.group();
     this.avatars  =this.add.group();
     
-    this.platform = this.add.tileSprite(400,500, 32 * 25, 1* 24, 'block');
+    this.platform = this.add.tileSprite(400,500, 32 * 24, 1* 25, 'block');
     this.physics.add.existing(this.platform,true);
     
     /*
@@ -70,7 +106,8 @@ class scene2 extends Phaser.Scene{
     
     //this.physics.add.collider(this.avatar[1],this.platforms);
      this.avartaCollide=this.physics.add.collider(this.avatars,this.platforms);
-    
+                        this.physics.add.collider(this.player,this.platforms); // has to be AFTER platforms have been created 
+                        this.physics.add.collider(this.player,this.avatars);
   }
   
   update(){
@@ -78,6 +115,41 @@ class scene2 extends Phaser.Scene{
 //	  this.platform2.angle+=.1;
 	 // debug.spriteBounds(platform2);
 	  //debug.bodyInfo(platform2, 32, 32);
+	  
+	  if (this.cursors.left.isDown)
+{
+    this.player.setVelocityX(-160);
+
+    this.player.anims.play('left', true);
+}
+else if (this.cursors.right.isDown)
+{
+    this.player.setVelocityX(160);
+
+    this.player.anims.play('right', true);
+}
+else if (this.cursors.down.isDown)
+{
+    this.player.setVelocityY(100);
+
+    this.player.anims.play('turn', true);
+}
+else
+{
+    this.player.setVelocityX(0);
+
+    this.player.anims.play('turn');
+}
+
+
+
+
+if (this.cursors.up.isDown && this.player.body.touching.down)
+{   console.log('jumping');
+    this.player.setVelocityY(-330);
+}
+	  
+	  
 	  
 	  }
   gravity(){

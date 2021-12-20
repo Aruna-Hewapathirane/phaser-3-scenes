@@ -24,7 +24,7 @@ class credits extends Phaser.Scene {
   preload(){
 	  
 	this.load.spritesheet('skull', 'assets/fireskullbig.png', { frameWidth: 240, frameHeight: 320 });
-	this.load.audio('forgiveness', 'audio/Forgiveness.mp3');
+	this.load.audio('forgiveness', 'audio/Sunny.mp3');
 
 	this.load.image('photonstorm','assets/photonstorm.png');
 	this.load.image('golen','assets/golen.png');
@@ -80,14 +80,32 @@ class credits extends Phaser.Scene {
 	});
 */
 	this.lucky137=this.physics.add.sprite(750, 450, 'lucky137');		
-	this.german=this.physics.add.sprite(750, 400, 'xfallseane');		
+	this.lucky137.body.moves = false;
+
+	this.xfallseane=this.physics.add.sprite(750, 400, 'xfallseane');		
+	this.xfallseane.body.moves = false;
+	
 	this.german=this.physics.add.sprite(750, 350, 'german');		
+	this.german.body.moves = false;
+	
 	this.kal_torak=this.physics.add.sprite(750, 300, 'kal_torak');
+	this.kal_torak.body.moves = false;
+	
 	this.samme=this.physics.add.sprite(750, 250, 'samme');
+	this.samme.body.moves = false;
+	
 	this.nixdixyklo=this.physics.add.sprite(750, 200, 'nixdixyklo');
+	this.nixdixyklo.body.moves = false;
+	
 	this.dino=this.physics.add.sprite(750, 150, 'dino');
+	this.dino.body.moves = false;	
+	
 	this.golen=this.physics.add.sprite(750, 100, 'golen');
+	this.golen.body.moves = false;
+	
 	this.ps=this.physics.add.sprite(750, 50, 'photonstorm');
+	this.ps.body.moves = false;
+	
 /*			
 	this.text1 = this.add.text(240, 520, 'Start Game', { font: 'bold 26pt TheMinion', fill: '#FDFFB5', align: 'center' ,stroke:"rgba(200,200,200,.25)",strokeThickness:8});
 	this.text1.setInteractive( { useHandCursor: true  });                
