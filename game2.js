@@ -8,10 +8,11 @@
 var config = {
         type: Phaser.AUTO,
         //width: window.innerWidth,
-        width:800,
+        //width:800,
         height: 600,
-        backgroundColor:"#36393f", // Discord background colour
-        //width:window.innerWidth,        
+        //backgroundColor:"#36393f", // Discord background colour
+        backgroundColor:"#000000", 
+        width:window.innerWidth,        
         physics: {
             default: 'arcade',
             arcade: {
@@ -20,7 +21,7 @@ var config = {
             }
         },
 
-      scene: [discord2,scene2]
+      scene: [discord2,scene2,credits]
     };
 
 var game = new Phaser.Game(config);
